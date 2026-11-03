@@ -102,7 +102,7 @@ router.delete('/:id', async (req, res) => {
     const id = String(task._id);
     await User.updateMany({ pendingTasks: id }, { $pull: { pendingTasks: id } });
     await task.deleteOne();
-    return ok(res, task, 200, 'Task deleted');
+    return res.status(204).end(); // 204 No Content: success, empty body
 });
 
 module.exports = router;
