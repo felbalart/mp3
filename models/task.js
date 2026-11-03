@@ -1,0 +1,21 @@
+// Load required packages
+const mongoose = require('mongoose');
+
+// Define our task schema
+const TaskSchema = new mongoose.Schema(
+    {
+        name: { type: String, required: true },
+        description: { type: String, default: '' },
+        deadline: { type: Date, required: true },
+        completed: { type: Boolean, default: false },
+        // _id string of the user this task is assigned to ("" = unassigned)
+        assignedUser: { type: String, default: '' },
+        assignedUserName: { type: String, default: 'unassigned' },
+        // Set by the server on creation; never changes afterwards
+        dateCreated: { type: Date, default: Date.now, immutable: true },
+    },
+    { versionKey: false }
+);
+
+// Export the Mongoose model
+module.exports = mongoose.model('Task', TaskSchema);

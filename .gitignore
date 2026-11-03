@@ -7,6 +7,4 @@ node_modules
 node_modules/*
 public/
 public/*
-
-# Environment variables (copy .env.example to .env). Never commit .env
 .env
